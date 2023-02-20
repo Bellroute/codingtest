@@ -1,36 +1,20 @@
 package programmers;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class Solution155652 {
-    public String solution(String[] cards1, String[] cards2, String[] goal) {
-        String answer = "";
 
-        Queue<String> cardQueue1 = new LinkedList<>();
-        for (String card : cards1) {
-            cardQueue1.offer(card);
+    public static String solution(String s, String skip, int index) {
+        StringBuilder answer = new StringBuilder();
+
+        String alphabets = "abcdefghijklmnopqrstuvwxyz";
+        for (String alphabet : skip.split("")) {
+            alphabets = alphabets.replace(alphabet, "");
         }
 
-        Queue<String> cardQueue2 = new LinkedList<>();
-        for (String card : cards2) {
-            cardQueue2.offer(card);
+        for (String alphabet : s.split("")) {
+            int next = alphabets.indexOf(alphabet) + index;
+            answer.append(alphabets.charAt(next % alphabets.length()));
         }
 
-        for (String word : goal) {
-            if (!cardQueue1.isEmpty() && word.equals(cardQueue1.peek())) {
-                cardQueue1.poll();
-                continue;
-            }
-
-            if (!cardQueue2.isEmpty() && word.equals(cardQueue2.peek())) {
-                cardQueue2.poll();
-                continue;
-            }
-
-            return "No";
-        }
-
-        return "Yes";
+        return answer.toString();
     }
 }
