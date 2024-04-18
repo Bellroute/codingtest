@@ -1,6 +1,8 @@
 package programmers;
 
-class Solution {
+// 연습문제 / 리코쳇 로봇
+// https://school.programmers.co.kr/learn/courses/30/lessons/169199?language=java
+class Solution178870 {
     public int[] solution(int[] sequence, int k) {
         int[] answer = new int[] {0, sequence.length};
 
